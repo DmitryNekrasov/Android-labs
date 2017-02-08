@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     private EditText firstNameEditText;
     private EditText lastNameEditText;
     private Button applyButton;
+    private TextView resultTextView;
     private Intent intent;
 
     @Override
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         firstNameEditText = (EditText) findViewById(R.id.firstNameEditText);
         lastNameEditText = (EditText) findViewById(R.id.lastNameEditText);
         applyButton = (Button) findViewById(R.id.applyButton);
+        resultTextView = (TextView) findViewById(R.id.resultTextView);
 
         intent = new Intent(this, SecondActivity.class);
 
@@ -33,5 +36,11 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 123);
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        String result = data.getStringExtra("result");
+        resultTextView.setText(result);
     }
 }
