@@ -19,7 +19,13 @@ public class MyService extends Service {
 
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(LOG_TAG, "onStartCommand");
-        someTask();
+        int n;
+        try {
+            n = Integer.valueOf(intent.getStringExtra("number"));
+        } catch (NumberFormatException ex) {
+            n = 1;
+        }
+        someTask(Math.max(1, n));
         return super.onStartCommand(intent, flags, startId);
     }
 
@@ -28,21 +34,12 @@ public class MyService extends Service {
         Log.d(LOG_TAG, "onDestroy");
     }
 
-    private void someTask() {
+    private void someTask(final int n) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                int n = 5;
-                for (int i = 0; i <= n; i++) {
-                    Log.d(LOG_TAG, "i = " + i);
-                    try {
-                        TimeUnit.SECONDS.sleep(1);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-                int result = 12345;
-                Log.d(LOG_TAG + " result", String.valueOf(result));
+                PrimeNumbers primes = new PrimeNumbers(n);
+                Log.d(LOG_TAG + " result", primes.toString());
             }
         }).start();
     }

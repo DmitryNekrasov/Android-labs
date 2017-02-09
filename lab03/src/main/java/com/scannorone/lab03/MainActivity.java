@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         startServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                myService.putExtra("number", nEditText.getText().toString());
                 startService(myService);
             }
         });
