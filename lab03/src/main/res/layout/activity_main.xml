@@ -43,11 +43,36 @@
         android:layout_below="@+id/nEditText"
         android:layout_toEndOf="@+id/startFirstServiceButton" />
 
-    <TextView
+    <Button
+        android:text="Bind"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/startFirstServiceButton"
         android:layout_alignParentStart="true"
-        android:id="@+id/resultTextView" />
+        android:id="@+id/bindButton" />
+
+    <Button
+        android:text="Unbind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/startFirstServiceButton"
+        android:layout_toEndOf="@+id/bindButton"
+        android:id="@+id/unbindButton" />
+
+    <Button
+        android:text="Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stopFirstServiceButton"
+        android:layout_toEndOf="@+id/unbindButton"
+        android:id="@+id/startSecondServiceButton" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/resultTextView"
+        android:text="result"
+        android:layout_below="@+id/bindButton"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
