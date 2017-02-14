@@ -6,8 +6,6 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import java.util.concurrent.TimeUnit;
-
 public class MyService extends Service {
 
     final String LOG_TAG = "myLog";
@@ -38,7 +36,16 @@ public class MyService extends Service {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Intent intent = new Intent(MainActivity.BROADCAST_ACTION);
+                intent.putExtra(MainActivity.PARAM_STATUS, MainActivity.STATUS_START);
+                sendBroadcast(intent);
+
                 PrimeNumbers primes = new PrimeNumbers(n);
+
+                intent.putExtra(MainActivity.PARAM_STATUS, MainActivity.STATUS_FINISH);
+                intent.putExtra(MainActivity.PARAM_RESULT, primes.toString());
+                sendBroadcast(intent);
+
                 Log.d(LOG_TAG + " result", primes.toString());
             }
         }).start();
