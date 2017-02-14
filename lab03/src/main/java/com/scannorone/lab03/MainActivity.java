@@ -15,9 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     EditText nEditText;
 
-    Button startServiceButton;
-    Button stopServiceButton;
-    Intent myService;
+    Button startFirstServiceButton;
+    Button stopFirstServiceButton;
+    Intent firstServiceIntent;
 
     TextView resultTextView;
 
@@ -38,9 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
         nEditText = (EditText) findViewById(R.id.nEditText);
 
-        startServiceButton = (Button) findViewById(R.id.startServiceButton);
-        stopServiceButton = (Button) findViewById(R.id.stopServiceButton);
-        myService = new Intent(this, MyService.class);
+        startFirstServiceButton = (Button) findViewById(R.id.startFirstServiceButton);
+        stopFirstServiceButton = (Button) findViewById(R.id.stopFirstServiceButton);
+        firstServiceIntent = new Intent(this, MyServiceFirst.class);
 
         resultTextView = (TextView) findViewById(R.id.resultTextView);
 
@@ -63,18 +63,18 @@ public class MainActivity extends AppCompatActivity {
         IntentFilter intentFilter = new IntentFilter(BROADCAST_ACTION);
         registerReceiver(broadcastReceiver, intentFilter);
 
-        startServiceButton.setOnClickListener(new View.OnClickListener() {
+        startFirstServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myService.putExtra("number", nEditText.getText().toString());
-                startService(myService);
+                firstServiceIntent.putExtra("number", nEditText.getText().toString());
+                startService(firstServiceIntent);
             }
         });
 
-        stopServiceButton.setOnClickListener(new View.OnClickListener() {
+        stopFirstServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                stopService(myService);
+                stopService(firstServiceIntent);
             }
         });
     }

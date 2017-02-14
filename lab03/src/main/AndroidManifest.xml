@@ -17,7 +17,7 @@
         </activity>
 
         <service
-            android:name=".MyService"
+            android:name=".MyServiceFirst"
             android:enabled="true"
             android:exported="true"></service>
     </application>

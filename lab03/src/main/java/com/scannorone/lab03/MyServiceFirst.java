@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-public class MyService extends Service {
+public class MyServiceFirst extends Service {
 
     final String LOG_TAG = "myLog";
 

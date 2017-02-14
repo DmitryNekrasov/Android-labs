@@ -31,7 +31,7 @@
         android:text="Start service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/startServiceButton"
+        android:id="@+id/startFirstServiceButton"
         android:layout_below="@+id/nEditText"
         android:layout_alignParentStart="true" />
 
@@ -39,14 +39,14 @@
         android:text="Stop service"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/stopServiceButton"
+        android:id="@+id/stopFirstServiceButton"
         android:layout_below="@+id/nEditText"
-        android:layout_toEndOf="@+id/startServiceButton" />
+        android:layout_toEndOf="@+id/startFirstServiceButton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/startServiceButton"
+        android:layout_below="@+id/startFirstServiceButton"
         android:layout_alignParentStart="true"
         android:id="@+id/resultTextView" />
 
