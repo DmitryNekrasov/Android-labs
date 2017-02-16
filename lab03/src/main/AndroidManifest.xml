@@ -23,7 +23,10 @@
         <service
             android:name=".MyServiceSecond"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true" />
+        <service
+            android:name=".MyServiceThird"
+            android:exported="false"></service>
     </application>
 
 </manifest>

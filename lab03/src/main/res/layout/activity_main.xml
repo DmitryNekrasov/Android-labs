@@ -67,12 +67,20 @@
         android:layout_toEndOf="@+id/unbindButton"
         android:id="@+id/startSecondServiceButton" />
 
+    <Button
+        android:text="Start third service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/startThirdServiceButton"
+        android:layout_below="@+id/bindButton"
+        android:layout_alignParentStart="true" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/resultTextView"
         android:text="result"
-        android:layout_below="@+id/bindButton"
+        android:layout_below="@+id/startThirdServiceButton"
         android:layout_alignParentStart="true" />
 
 </RelativeLayout>

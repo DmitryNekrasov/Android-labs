@@ -32,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     MyServiceSecond secondService;
     boolean bound = false;
 
+    Button startThirdServiceButton;
+    Intent thirdServiceIntent;
+
     public static final int STATUS_START = 100;
     public static final int STATUS_FINISH = 200;
 
@@ -48,14 +51,6 @@ public class MainActivity extends AppCompatActivity {
         nEditText = (EditText) findViewById(R.id.nEditText);
         resultTextView = (TextView) findViewById(R.id.resultTextView);
 
-        createForFirstService();
-        createForSecondService();
-    }
-
-    void createForFirstService() {
-        startFirstServiceButton = (Button) findViewById(R.id.startFirstServiceButton);
-        stopFirstServiceButton = (Button) findViewById(R.id.stopFirstServiceButton);
-        firstServiceIntent = new Intent(this, MyServiceFirst.class);
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -74,6 +69,16 @@ public class MainActivity extends AppCompatActivity {
 
         IntentFilter intentFilter = new IntentFilter(BROADCAST_ACTION);
         registerReceiver(broadcastReceiver, intentFilter);
+
+        createForFirstService();
+        createForSecondService();
+        createForThirdService();
+    }
+
+    void createForFirstService() {
+        startFirstServiceButton = (Button) findViewById(R.id.startFirstServiceButton);
+        stopFirstServiceButton = (Button) findViewById(R.id.stopFirstServiceButton);
+        firstServiceIntent = new Intent(this, MyServiceFirst.class);
 
         startFirstServiceButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,6 +147,19 @@ public class MainActivity extends AppCompatActivity {
                     String result = secondService.someTask(Math.max(1, n));
                     resultTextView.setText("Task finish, result: " + result);
                 }
+            }
+        });
+    }
+
+    void createForThirdService() {
+        startThirdServiceButton = (Button) findViewById(R.id.startThirdServiceButton);
+        thirdServiceIntent = new Intent(this, MyServiceThird.class);
+
+        startThirdServiceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                thirdServiceIntent.putExtra("number", nEditText.getText().toString());
+                startService(thirdServiceIntent);
             }
         });
     }
